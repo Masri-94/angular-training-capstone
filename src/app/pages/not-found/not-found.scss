@@ -1,0 +1,46 @@
+.not-found-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #f7f7f7;
+  font-family: Arial, sans-serif;
+}
+
+.emoji {
+  font-size: 90px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 120px;
+  margin: 0;
+  color: #555;
+}
+
+h2 {
+  margin: 10px 0;
+  color: #777;
+}
+
+p {
+  color: #999;
+  max-width: 400px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 8px;
+  background: #1976d2;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #125aa0;
+}
