@@ -1,18 +1,30 @@
 import { Routes } from '@angular/router';
-import { Home } from './components/home/home';
 import { NotFound } from './pages/not-found/not-found';
+
+import { HomeComponent} from './pages/home/home';
+
+
+
+
 
 
 export const routes: Routes = [
-    {
+  //   {
+  //   path: '',
+  //   component: Home ,
+  //   pathMatch: 'full'
+  // },
+
+  
+   {
     path: '',
-    component: Home ,
-    pathMatch: 'full'
+    component: HomeComponent
   },
 
   {
     path: '**',
     component: NotFound
   }
+
 
 ];

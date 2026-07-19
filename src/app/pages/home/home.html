@@ -1,0 +1,38 @@
+<div class="container">
+
+    <h1>🌍 Countries of the World</h1>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Region</th>
+                    <th>Capital</th>
+                    <th>Population (Millions)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr *ngFor="let country of countries">
+
+                    <td>{{ country.name }}</td>
+
+                    <td>{{ country.region }}</td>
+
+                    <td>{{ country.capital }}</td>
+
+                    <td>{{ populationInMillions(country.population) }}</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
