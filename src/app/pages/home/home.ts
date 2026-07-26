@@ -1,32 +1,105 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Countries} from '../../services/countries';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
 
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { MatTableDataSource } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,
+  
+  ReactiveFormsModule,
+
+  MatTableModule,
+  MatSnackBarModule,
+  MatAutocompleteModule,
+  MatFormFieldModule,
+  MatInputModule
+ ],
   templateUrl: './home.html',
   styleUrls: ['./home.scss']
 })
 export class HomeComponent implements OnInit {
+displayedColumns: string[] = [
+'name',
+'region',
+'capital',
+'population'
+];
 
-  countries: any[] = [];
+dataSource = new MatTableDataSource<any>();
 
-  constructor(private countriesService: Countries) {}
+countries: any[] = [];
 
-  ngOnInit(): void {
+filteredCountries: any[] = [];
+
+countryControl = new FormControl('');
+
+
+  constructor(
+    private countriesService: Countries, 
+     private snackBar: MatSnackBar) {}
+
+  ngOnInit() {
     this.loadCountries();
   }
 
   loadCountries() {
-    this.countriesService.getCountries().subscribe((data: any) => {
+    this.countriesService.getCountries().subscribe({next: (data) => {
       this.countries = data;
-    });
-  }
+       this.dataSource.data = data;
+       this.filteredCountries = data;
 
-  populationInMillions(population: number): string {
-    return (population / 1000000).toFixed(1);
-  }
+this.countryControl.valueChanges.subscribe(value => {
+  
+let text=(value || '').toLowerCase();
+
+
+this.filteredCountries =
+this.countries.filter(country=>
+country.name.toLowerCase()
+.includes(text)
+);
+
+
+
+this.dataSource.data=
+this.filteredCountries;
+
+
+
+});
+
+
+},
+
+
+error:()=>{
+
+this.snackBar.open(
+'Failed to load countries',
+'Close',
+{
+duration:3000
+}
+);
+
+
+}
+
+
+});
+
+
+}
+
+
 
 }

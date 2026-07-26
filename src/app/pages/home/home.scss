@@ -8,17 +8,17 @@ body {
 }
 
 .container {
-    width: 95%;
-    max-width: 1300px;
+    width: 90%;
+    // max-width: 1300px;
     margin: auto;
     padding: 30px;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 30px;
-    color: #0d47a1;
-    font-size: 40px;
+    // margin-bottom: 30px;
+    color: #1565c0;
+    // font-size: 40px;
 }
 
 .table-container {
@@ -27,11 +27,11 @@ h1 {
 
 table {
     width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,.15);
+    // border-collapse: collapse;
+    // background: white;
+    // border-radius: 12px;
+    // overflow: hidden;
+    // box-shadow: 0 10px 25px rgba(0,0,0,.15);
 }
 
 thead {
@@ -52,6 +52,12 @@ tbody tr:nth-child(even) {
 tbody tr:hover {
     background: #e3f2fd;
     transition: .3s;
+}
+
+
+mat-form-field {
+  width: 350px;
+  
 }
 
 @media (max-width:768px){

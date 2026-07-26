@@ -11,7 +11,7 @@ export class Countries {
 
   constructor(private http: HttpClient) {}
 
-  getCountries() {
+  getCountries(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
 
